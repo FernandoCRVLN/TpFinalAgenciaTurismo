@@ -39,7 +39,7 @@ public class SvVenta extends HttpServlet {
         int id_servicio = -1;
         int id_paquete = -1;
         
-        if(seleccionPaquete == null){
+        if(seleccionPaquete != null){
             id_servicio = Integer.parseInt(request.getParameter("servicio"));
         }else{
             id_paquete = Integer.parseInt(request.getParameter("paquete"));
