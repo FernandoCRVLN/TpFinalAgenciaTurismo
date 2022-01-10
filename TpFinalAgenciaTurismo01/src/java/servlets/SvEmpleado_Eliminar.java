@@ -10,19 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logica.Controladora;
 
-/**
- *
- * @author FerCod
- */
-@WebServlet(name = "SvCliente_Eliminar", urlPatterns = {"/SvCliente_Eliminar"})
-public class SvCliente_Eliminar extends HttpServlet {
+@WebServlet(name = "SvEmpleado_Eliminar", urlPatterns = {"/SvEmpleado_Eliminar"})
+public class SvEmpleado_Eliminar extends HttpServlet {
     
     Controladora control = new Controladora(); 
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,26 +26,20 @@ public class SvCliente_Eliminar extends HttpServlet {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int id_cliente = Integer.parseInt(request.getParameter("cliente"));
+        int id_empleado = Integer.parseInt(request.getParameter("empleado"));
         
-        control.eliminarCliente(id_cliente);
+        control.eliminarCliente(id_empleado);
         
-        request.getSession().setAttribute("listaClientes", control.listaCliente());
+        request.getSession().setAttribute("listaEmpleados", control.listaEmpleado());
         
-        response.sendRedirect("clientes.jsp");
-        
+        response.sendRedirect("empleados.jsp");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";

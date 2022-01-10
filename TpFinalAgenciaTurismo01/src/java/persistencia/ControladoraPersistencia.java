@@ -14,6 +14,7 @@ import logica.PaqueteTuristico;
 import logica.ServicioTuristico;
 import logica.Usuario;
 import logica.Venta;
+import persistencia.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -108,6 +109,39 @@ public class ControladoraPersistencia {
     public ServicioTuristico buscarServicio(int servicio) {
         return servicioJPA.findServicioTuristico(servicio);
     }
+
+    public void eliminarCliente(int id_cliente) {
+        try {
+            clienteJPA.destroy(id_cliente);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Cliente buscarCliente(int id_cliente) {
+         return clienteJPA.findCliente(id_cliente);
+    }
+
+    public void modificarCliente(Cliente unCliente) {
+        try {
+            clienteJPA.edit(unCliente);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Empleado buscarEmpleado(int id_empleado) {
+        return empleadoJPA.findEmpleado(id_empleado);
+    }
+
+    public void modificarEmpleado(Empleado unEmpleado) {
+        try {
+            empleadoJPA.edit(unEmpleado);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     
 }

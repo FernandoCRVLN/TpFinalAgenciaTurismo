@@ -4,10 +4,10 @@
     Author     : FerCod
 --%>
 
+<%@page import="logica.Empleado"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="logica.Cliente"%>
-<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,6 @@
     <link href="css/swiper.css" rel="stylesheet">
     <link href="css/magnific-popup.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <link href="css/table.css" rel="stylesheet">
 
     <!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
@@ -79,7 +78,7 @@
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="empleados.jsp">EMPLEADOS</a>
+                    <a class="nav-link page-scroll" href="clientes.jsp">CLIENTES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="alta_servicio.jsp">ALTA DE SERVICIOS</a>
@@ -117,76 +116,73 @@
 
     <!-- Call Me Form -->
     <div id="Alta" class="form-1">
-        <h2 class="form-titulo" style="text-align: center; color: aqua;">CLIENTES</h2>
+        <h2 class="form-titulo" style="text-align: center; color: aqua;">MODIFICAR EMPLEADOS</h2>
         <div class="container">
+            <form id="Alta" data-toggle="validator" data-focus="false" action="SvEmpleado_Editar" method="get">
+                <% HttpSession miSession = request.getSession();
+                    Empleado unEmpleado = (Empleado) miSession.getAttribute("unEmpleado");
+                                     
+
+                %>
                 <div class="row">
-                    <table class="tbl-header">
-                        <thead >
-                        <th >Nombre Cliente</th>
-                        <th >DNI</th>
-                        <th>Fecha de Nacimiento</th>
-                        <th>Nacionalidad</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th style=" width: 200px">e-mail</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                        </thead>
-                        <tbody>
-                            <% HttpSession miSession = request.getSession();
-
-                        List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
-                            for(Cliente unCliente : listaClientes){
-                                %>
-
-                            <tr>
-                                <% String nombreCompleto = unCliente.getNombre() + " " + unCliente.getApellido(); 
-                                   String dni = unCliente.getDni();
-                                   String nacionalidad = unCliente.getNacionalidad();
-                                   String direccion = unCliente.getDireccion();
-                                   String telefono = unCliente.getCelular();
-                                   String email = unCliente.getEmail();
-                                   Date fecha = unCliente.getFechaNacimiento();
-                                   int idCliente = unCliente.getId_cliente();
-                                   
-                                   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-                                   String fechaString = sdf.format(fecha);
-                                %>
-                                <td><%= nombreCompleto %></td>
-                                <td><%= dni %></td>
-                                <td><%= fechaString %></td>
-                                <td><%= nacionalidad %></td>
-                                <td><%= direccion %></td>
-                                <td><%= telefono %></td>
-                                <td><%= email %></td> 
-                                
-                                
-                                <td>
-                                    <form style="align-content: center; margin: auto" name="formEditarrCliente" action="SvCliente_Editar" method="post">
-                                        <input type="hidden" name="cliente" value="<%= idCliente%>">
-                                        <button type="submit" >MODIFICAR</button>
-                                    </form>
-                                    
-                                </td>
-                                <td>
-                                    <form style="align-content: center; margin: auto" name="formBorrarCliente" action="SvCliente_Eliminar" method="post">
-                                        <input type="hidden" name="cliente" value="<%= idCliente%>">
-                                        <button type="submit">ELIMINAR</button>
-                                    </form>
-                                </td>   
-                                
-
-                                <% } %>
-                            </tr>
-                        </tbody>
-                        
-                    </table>
-                    <div style="margin: auto;">
-                        <div class="text-container">
-                            <a class="btn-solid-lg page-scroll" href="alta_cliente.jsp">NUEVO CLIENTE</a>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control-input" id="empleado1" name="empleado" value="<%=unEmpleado.getId_empleado()%>">
+                            <input type="text" class="form-control-input" id="nombre" name="nombre" value="<%=unEmpleado.getNombre()%>">
+                            <label class="label-control" for="nombre">Nombre</label>
+                            <div class="help-block with-errors"></div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="apellido" name="apellido" value="<%=unEmpleado.getApellido()%>">
+                            <label class="label-control" for="apellido">Apellido</label>
+                            
+                        </div>
+                        <div class="form-group">
+                       
+                            <input type="date" class="form-control-input" id="fechaNacim" name="fechaNacim" value="<%=unEmpleado.getFechaNacimiento() %>">
+                            <label class="label-control" for="fechaNacim">Fecha Nacimiento</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="dni" name="dni" value="<%=unEmpleado.getDni()%>">
+                            <label class="label-control" for="dni">Documento de Identidad</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="reset" class="form-control-submit-button">BORRAR DATOS</button>
+                        </div>
+                    </div> <!-- end of col -->
+                    <div class="col-lg-6">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="nacionaliad" name="nacionalidad" value="<%=unEmpleado.getNacionalidad()%>">
+                            <label class="label-control" for="nacionalidad">Nacionalidad</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="direccion" name="direccion" value="<%=unEmpleado.getDireccion()%>">
+                            <label class="label-control" for="direccion">Direccion</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control-input" id="email" name="email" value="<%=unEmpleado.getEmail() %>">
+                            <label class="label-control" for="email">Email</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control-input" id="celular" name="celular" value="<%=unEmpleado.getCelular() %>">
+                            <label class="label-control" for="celular">Teléfono</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control-submit-button">GUARDAR DATOS</button>
+                        </div>
+                        <div class="form-message">
+                            <div id="lmsgSubmit" class="h3 text-center hidden"></div>
+                        </div>
+                    </div> <!-- end of col -->
                 </div> <!-- end of row -->
+            </form>
             <!-- end of call me form -->
         </div> <!-- end of container -->
     </div> <!-- end of form-1 -->

@@ -4,9 +4,9 @@
     Author     : FerCod
 --%>
 
+<%@page import="logica.Empleado"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="logica.Cliente"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
     <meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Alta Nuevos Clientes</title>
+    <title>Clientes</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
@@ -79,7 +79,7 @@
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="empleados.jsp">EMPLEADOS</a>
+                    <a class="nav-link page-scroll" href="clientes.jsp">CLIENTES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="alta_servicio.jsp">ALTA DE SERVICIOS</a>
@@ -117,12 +117,12 @@
 
     <!-- Call Me Form -->
     <div id="Alta" class="form-1">
-        <h2 class="form-titulo" style="text-align: center; color: aqua;">CLIENTES</h2>
+        <h2 class="form-titulo" style="text-align: center; color: aqua;">EMPLEADOS</h2>
         <div class="container">
                 <div class="row">
                     <table class="tbl-header">
                         <thead >
-                        <th >Nombre Cliente</th>
+                        <th >Nombre Empleados</th>
                         <th >DNI</th>
                         <th>Fecha de Nacimiento</th>
                         <th>Nacionalidad</th>
@@ -135,19 +135,19 @@
                         <tbody>
                             <% HttpSession miSession = request.getSession();
 
-                        List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
-                            for(Cliente unCliente : listaClientes){
+                        List <Empleado> listaEmpleados = (List) request.getSession().getAttribute("listaEmpleados");
+                            for(Empleado unEmpleado : listaEmpleados){
                                 %>
 
                             <tr>
-                                <% String nombreCompleto = unCliente.getNombre() + " " + unCliente.getApellido(); 
-                                   String dni = unCliente.getDni();
-                                   String nacionalidad = unCliente.getNacionalidad();
-                                   String direccion = unCliente.getDireccion();
-                                   String telefono = unCliente.getCelular();
-                                   String email = unCliente.getEmail();
-                                   Date fecha = unCliente.getFechaNacimiento();
-                                   int idCliente = unCliente.getId_cliente();
+                                <% String nombreCompleto = unEmpleado.getNombre() + " " + unEmpleado.getApellido(); 
+                                   String dni = unEmpleado.getDni();
+                                   String nacionalidad = unEmpleado.getNacionalidad();
+                                   String direccion = unEmpleado.getDireccion();
+                                   String telefono = unEmpleado.getCelular();
+                                   String email = unEmpleado.getEmail();
+                                   Date fecha = unEmpleado.getFechaNacimiento();
+                                   int idEmpleado = unEmpleado.getId_empleado();
                                    
                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                                    String fechaString = sdf.format(fecha);
@@ -162,15 +162,15 @@
                                 
                                 
                                 <td>
-                                    <form style="align-content: center; margin: auto" name="formEditarrCliente" action="SvCliente_Editar" method="post">
-                                        <input type="hidden" name="cliente" value="<%= idCliente%>">
+                                    <form style="align-content: center; margin: auto" name="formEditarEmpleado" action="SvEmpleado_Editar" method="post">
+                                        <input type="hidden" name="empleado" value="<%= idEmpleado%>">
                                         <button type="submit" >MODIFICAR</button>
                                     </form>
                                     
                                 </td>
                                 <td>
-                                    <form style="align-content: center; margin: auto" name="formBorrarCliente" action="SvCliente_Eliminar" method="post">
-                                        <input type="hidden" name="cliente" value="<%= idCliente%>">
+                                    <form style="align-content: center; margin: auto" name="formBorrarEmpleado" action="SvEmpleado_Eliminar" method="post">
+                                        <input type="hidden" name="empleado" value="<%= idEmpleado%>">
                                         <button type="submit">ELIMINAR</button>
                                     </form>
                                 </td>   
@@ -183,7 +183,7 @@
                     </table>
                     <div style="margin: auto;">
                         <div class="text-container">
-                            <a class="btn-solid-lg page-scroll" href="alta_cliente.jsp">NUEVO CLIENTE</a>
+                            <a class="btn-solid-lg page-scroll" href="alta_empleado.jsp">NUEVO EMPLEADO</a>
                         </div>
                     </div>
                 </div> <!-- end of row -->

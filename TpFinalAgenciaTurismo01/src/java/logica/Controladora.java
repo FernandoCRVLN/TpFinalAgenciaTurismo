@@ -87,26 +87,6 @@ public class Controladora {
         unCliente.setCelular(celular);
         unCliente.setEmail(email);
         
-        
-
-//        try {
-//            fecha= formato.parse("1977-13-02");
-//        } catch (ParseException ex) {
-//            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-//            fecha= null;
-//        }
-//
-//        unCliente.setNombre("Fernando");
-//        unCliente.setApellido("Corva");
-//        unCliente.setDni("25782631");
-//        unCliente.setFechaNacimiento(fecha);
-//        unCliente.setDireccion("SOEVA B2");
-//        unCliente.setNacionalidad("Argentina");
-//        unCliente.setCelular("2612074967");
-//        unCliente.setEmail("fer__co@hotmail.com");
-//        unCliente.setListaVentas(null);
-        
-        
         controlPersistencia.altaCliente(unCliente);
     }
 
@@ -223,5 +203,27 @@ public class Controladora {
     private ServicioTuristico buscarServicio(int servicio) {
          return controlPersistencia.buscarServicio(servicio);
     }
+
+    public void eliminarCliente(int id_cliente) {
+        controlPersistencia.eliminarCliente(id_cliente);
+    }
+
+    public Cliente buscarCliente(int id_cliente) {
+        return controlPersistencia.buscarCliente(id_cliente);
+    }
+
+    public void modificarCliente(Cliente unCliente) {
+        controlPersistencia.modificarCliente(unCliente);
+    }
+
+    public Empleado buscarEmpleado(int id_empleado) {
+        return controlPersistencia.buscarEmpleado(id_empleado);
+    }
+
+    public void modificarEmpleado(Empleado unEmpleado) {
+         controlPersistencia.modificarEmpleado(unEmpleado);
+    }
+
+    
 
 }
