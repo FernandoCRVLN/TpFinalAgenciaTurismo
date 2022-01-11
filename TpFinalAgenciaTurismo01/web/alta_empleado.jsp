@@ -73,7 +73,7 @@
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="alta_cliente.jsp">ALTA CLIENTES</a>
+                    <a class="nav-link page-scroll" href="SvCliente_Lista">CLIENTES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="alta_servicio.jsp">ALTA DE SERVICIOS</a>

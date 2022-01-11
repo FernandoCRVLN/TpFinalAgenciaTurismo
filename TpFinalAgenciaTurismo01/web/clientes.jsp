@@ -135,9 +135,9 @@
                         <tbody>
                             <% HttpSession miSession = request.getSession();
 
-                        List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
-                            for(Cliente unCliente : listaClientes){
-                                %>
+                                List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
+                                for(Cliente unCliente : listaClientes){
+                            %>
 
                             <tr>
                                 <% String nombreCompleto = unCliente.getNombre() + " " + unCliente.getApellido(); 

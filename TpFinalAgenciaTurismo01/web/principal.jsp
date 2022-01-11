@@ -77,11 +77,9 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
-                <form>
-                    <li class="nav-item">
-                    <a type="submit" class="nav-link page-scroll" href="SvCliente_Lista">CLIENTES</a>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="SvCliente_Lista">CLIENTES</a>
                 </li>
-                </form>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="SvEmpleado_Lista">EMPLEADOS</a>
                 </li>

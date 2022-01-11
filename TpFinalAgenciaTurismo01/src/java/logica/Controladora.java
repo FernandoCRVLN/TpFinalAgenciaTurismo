@@ -69,7 +69,7 @@ public class Controladora {
         
         Cliente unCliente = new Cliente();
                
-        SimpleDateFormat formato = new SimpleDateFormat("YYYY-dd-MM");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
         try {
             fecha= formato.parse(fechaNacimiento);
@@ -94,7 +94,8 @@ public class Controladora {
         
         ServicioTuristico unServicio = new ServicioTuristico();
         
-        SimpleDateFormat formato = new SimpleDateFormat("YYYY-dd-MM");
+//        SimpleDateFormat formato = new SimpleDateFormat("YYYY-dd-MM");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
         try {
             fecha= formato.parse(fecha_servicio);
@@ -112,7 +113,6 @@ public class Controladora {
         controlPersistencia.altaServicio(unServicio);
     }
     
-
     public void crearPaquete(String[] listaServicios, String nombrePaquete) {
        
         PaqueteTuristico unPaquete = new PaqueteTuristico();
@@ -135,7 +135,7 @@ public class Controladora {
         
          Venta unaVenta = new Venta();
          
-        SimpleDateFormat formato = new SimpleDateFormat("YYYY-dd-MM");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
         try {
             fecha= formato.parse(fechaVenta);
@@ -170,12 +170,30 @@ public class Controladora {
         unaVenta.setUnEmpleado(unEmpleado);
         
         controlPersistencia.altaVenta(unaVenta);
-    }   
+    }
+    
+    ///METODOS DE BUSQUEDA   
+    public Cliente buscarCliente(int id_cliente) {
+        return controlPersistencia.buscarCliente(id_cliente);
+    }
+    
+    public Empleado buscarEmpleado(int id_empleado) {
+        return controlPersistencia.buscarEmpleado(id_empleado);
+    }
+    
+    private PaqueteTuristico buscarPaquete(int paquete) {
+        return controlPersistencia.buscarPaquete(paquete);
+    }
 
+    private ServicioTuristico buscarServicio(int servicio) {
+        return controlPersistencia.buscarServicio(servicio);
+    }
+    
     private ServicioTuristico buscarServicioTuristico(int id) {
         return controlPersistencia.buscarServicioTuristico(id);
     }
     
+    ///METODOS DE LISTAS
     public List<Cliente> listaCliente(){
         return controlPersistencia.listaCliente();
     }
@@ -196,33 +214,26 @@ public class Controladora {
         return controlPersistencia.listaVenta();
     }
 
-    private PaqueteTuristico buscarPaquete(int paquete) {
-         return controlPersistencia.buscarPaquete(paquete);
+    ///METODOS DE MODIFICACION
+    public void modificarCliente(Cliente unCliente) {
+        controlPersistencia.modificarCliente(unCliente);
     }
-
-    private ServicioTuristico buscarServicio(int servicio) {
-         return controlPersistencia.buscarServicio(servicio);
+    
+    public void modificarEmpleado(Empleado unEmpleado) {
+        controlPersistencia.modificarEmpleado(unEmpleado);
     }
-
+    
+    
+    ///METODOS DE ELIMINACIÓN
     public void eliminarCliente(int id_cliente) {
         controlPersistencia.eliminarCliente(id_cliente);
     }
 
-    public Cliente buscarCliente(int id_cliente) {
-        return controlPersistencia.buscarCliente(id_cliente);
+    public void eliminarEmpleado(int id_empleado) {
+        controlPersistencia.eliminarEmpleado(id_empleado);
     }
-
-    public void modificarCliente(Cliente unCliente) {
-        controlPersistencia.modificarCliente(unCliente);
-    }
-
-    public Empleado buscarEmpleado(int id_empleado) {
-        return controlPersistencia.buscarEmpleado(id_empleado);
-    }
-
-    public void modificarEmpleado(Empleado unEmpleado) {
-         controlPersistencia.modificarEmpleado(unEmpleado);
-    }
+    
+    
 
     
 

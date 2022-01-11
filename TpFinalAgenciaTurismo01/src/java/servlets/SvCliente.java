@@ -43,7 +43,9 @@ public class SvCliente extends HttpServlet {
         
         control.crarCliente(nombre, apellido, dni, fechaNacimiento, direccion, nacionalidad, celular, email);
         
-        response.sendRedirect("alta_cliente.jsp");
+        request.getSession().setAttribute("listaClientes", control.listaCliente());
+        
+        response.sendRedirect("clientes.jsp");
         
         
     }

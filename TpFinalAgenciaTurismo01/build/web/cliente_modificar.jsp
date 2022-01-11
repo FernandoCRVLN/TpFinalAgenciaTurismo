@@ -1,5 +1,5 @@
 <%-- 
-    Document   : alta_empleados
+    Document   : alta_clientes
     Created on : 12/12/2021, 19:24:05
     Author     : FerCod
 --%>
@@ -17,7 +17,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="Alta de Empleados">
+        content="Alta de Clientes">
     <meta name="author" content="Inovatik">
 
     <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
@@ -77,7 +77,7 @@
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="alta_empleado.jsp">ALTA EMPLEADOS</a>
+                    <a class="nav-link page-scroll" href="alta_empleado.jsp">EMPLEADOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="alta_servicio.jsp">ALTA DE SERVICIOS</a>
@@ -115,7 +115,7 @@
 
     <!-- Call Me Form -->
     <div id="Alta" class="form-1">
-        <h2 class="form-titulo" style="text-align: center; color: aqua;">ALTA DE CLIENTES</h2>
+        <h2 class="form-titulo" style="text-align: center; color: aqua;">MODIFICA DATOS DE CLIENTES</h2>
         <div class="container">
             <form id="Alta" data-toggle="validator" data-focus="false" action="SvCliente_Editar" method="get">
                 <% HttpSession miSession = request.getSession();
@@ -133,7 +133,7 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control-input" id="apellido" name="apellido" value="<%=unCliente.getApellido()%>">
-                            <label class="label-control" for="lphone">Apellido</label>
+                            <label class="label-control" for="apellido">Apellido</label>
                             
                         </div>
                         <div class="form-group">

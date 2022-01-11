@@ -39,8 +39,6 @@ public class SvUsuario extends HttpServlet {
         
         boolean autorizado = control.verificarUsuario(usuario, password);
         
-        
-        
         if(autorizado) {
             
             HttpSession misession = request.getSession(true);

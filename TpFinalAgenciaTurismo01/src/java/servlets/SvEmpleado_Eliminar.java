@@ -32,7 +32,7 @@ public class SvEmpleado_Eliminar extends HttpServlet {
         
         int id_empleado = Integer.parseInt(request.getParameter("empleado"));
         
-        control.eliminarCliente(id_empleado);
+        control.eliminarEmpleado(id_empleado);
         
         request.getSession().setAttribute("listaEmpleados", control.listaEmpleado());
         

@@ -115,7 +115,7 @@
 
     <!-- Call Me Form -->
     <div id="Alta" class="form-1">
-        <h2 class="form-titulo" style="text-align: center; color: aqua;">ALTA DE CLIENTES</h2>
+        <h2 class="form-titulo" style="text-align: center; color: aqua;">MODIFICA DATOS DE CLIENTES</h2>
         <div class="container">
             <form id="Alta" data-toggle="validator" data-focus="false" action="SvCliente_Editar" method="get">
                 <% HttpSession miSession = request.getSession();

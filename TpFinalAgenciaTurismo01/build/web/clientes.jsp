@@ -79,7 +79,7 @@
                     <a class="nav-link page-scroll" href="principal.jsp">PRINCIPAL <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="alta_empleado.jsp">ALTA EMPLEADOS</a>
+                    <a class="nav-link page-scroll" href="empleados.jsp">EMPLEADOS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="alta_servicio.jsp">ALTA DE SERVICIOS</a>
@@ -135,9 +135,9 @@
                         <tbody>
                             <% HttpSession miSession = request.getSession();
 
-                        List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
-                            for(Cliente unCliente : listaClientes){
-                                %>
+                                List <Cliente> listaClientes = (List) request.getSession().getAttribute("listaClientes");
+                                for(Cliente unCliente : listaClientes){
+                            %>
 
                             <tr>
                                 <% String nombreCompleto = unCliente.getNombre() + " " + unCliente.getApellido(); 

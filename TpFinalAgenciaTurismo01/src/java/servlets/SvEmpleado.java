@@ -48,7 +48,9 @@ public class SvEmpleado extends HttpServlet {
         
         control.crarEmpleado(nombre, apellido, dni, fechaNacimiento, direccion, nacionalidad, celular, email, cargo, sueldo, usuario, password);
         
-        response.sendRedirect("alta_empleado.jsp");
+        request.getSession().setAttribute("listaEmpleados", control.listaEmpleado());
+        
+        response.sendRedirect("empleados.jsp");
     }
 
 
